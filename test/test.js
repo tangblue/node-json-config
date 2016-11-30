@@ -13,7 +13,10 @@ function log(str) {
 describe('Config', function () {
 
     var path = "./config.json";
-    var conf = new Config(path);
+    var conf = new Config(path, function (conf) {
+        console.log(conf);
+        return true;
+    });
     var nojson = "./no.json";
     
     describe('#get()', function () {
@@ -33,6 +36,18 @@ describe('Config', function () {
 	    var key = "x.y.z";
 	    var val = conf.get(key);
 	    assert.equal(undefined, val);
+    });
+
+    	it('globalConst => include json file', function () {
+	    var key = "globalConst.message";
+	    var val = conf.get(key);
+	    assert.equal("Hello world!", val);
+    });
+
+    	it('message => reference', function () {
+	    var key = "message";
+	    var val = conf.get(key);
+	    assert.equal("Hello world!", val);
 	});
     });
 
@@ -65,6 +80,5 @@ describe('Config', function () {
     });
 
     after(function () {
-	fs.unlink(nojson);
     });
 });

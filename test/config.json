@@ -1,10 +1,18 @@
 {
+    "validAfter": "2016-11-30T00:00:00",
+
+    "globalConst": "#include ./constants.json",
+
     "foo": "bar",
     "a": {
+    "innerConst": "#include ./constants.json",
+    "message": "#= globalConst.message",
 	"b": {
 	    "c": {
 		"d": 999
 	    }
 	}
-    }
+    },
+
+    "message": "#= a.innerConst.message"
 }

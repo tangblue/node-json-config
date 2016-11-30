@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/Takayoshi-Aoyagi/node-json-config/issues"
   },
-  "homepage": "https://github.com/Takayoshi-Aoyagi/node-json-config"
+  "homepage": "https://github.com/Takayoshi-Aoyagi/node-json-config",
+  "dependencies": {
+    "chokidar": "^1.6.1",
+    "mocha": "^3.2.0"
+  }
 }
