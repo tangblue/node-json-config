@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Takayoshi-Aoyagi/node-json-config",
   "dependencies": {
     "chokidar": "^1.6.1",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "async": "^2.1.4"
   }
 }
