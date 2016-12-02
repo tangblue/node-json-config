@@ -8,8 +8,14 @@ Read and Write configurations to JSON file.
 Create Config instance with JSON path.
 Configurations are automatically loaded from the JSON file.
 
+### Arguments
+new Config(path, checkFn, reload);
++ path: The JSON file name.
++ checkFn: The config check function. Invoked with (conf). Return true is the config is valid, else return false.
++ reload: Boolean for reload automatically when the JSON file is changed.
+
 ```
-var conf = new Config("./config.json");
+var conf = new Config("./config.json", checkFn, false);
 ```
 
 ## Read configuration
@@ -76,3 +82,34 @@ conf.put("x.y.z", "XYZ");
 ```
 conf.save();
 ```
+
+## JSON extenstion
+
+### Include another JSON file
+If the value is string and start with "#include ", the value will be replaced by the value loaded from the included JSON file. The included JSON file name is the string after "#include ".
+
+Note: Only support one level include file. The include files in an include file will not be loaded.
+
+Example:
+```
+{
+    "constants": "#include ./constants.json",
+}
+```
+
+### Reference value
+If the value is string and start with "#= ", the value will be replaced by the referenced value. The referenced value name is the string after "#include ".
+
+Note: Only support absolutely reference.
+
+Example:
+```
+{
+    "constants": "#include ./constants.json",
+
+    "message": "#= constants.message",
+}
+```
+
+## Reload automatically when the JSON file is changed
+When the third argument "reload" is true, the config will be reload automatically when the JSON file is changed.

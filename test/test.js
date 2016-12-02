@@ -16,7 +16,7 @@ describe('Config', function () {
     var conf = new Config(path, function (conf) {
         console.log(conf);
         return true;
-    });
+    }, true);
     var nojson = "./no.json";
     
     describe('#get()', function () {
