@@ -26,6 +26,7 @@
   "dependencies": {
     "chokidar": "^1.6.1",
     "mocha": "^3.2.0",
+    "path": "^0.12.7",
     "async": "^2.1.4"
   }
 }
